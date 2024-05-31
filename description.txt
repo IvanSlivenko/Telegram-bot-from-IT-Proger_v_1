@@ -1,0 +1,24 @@
+--------------------------------------------------------------part 1
+
+https://youtu.be/ObwoMskHDoA?list=PL0lO_mIqDDFUev1gp9yEwmwcy8SicqKbt
+
+name = Bildexpres
+user_name = BildExpresBot
+TOKEN = 7023058907:AAENFKpa-Zf1wFNS6hIA5rHsTAA8nKMHUdc
+
+
+00 : 00
+
+----------------------------------------------------------end part 1
+
+
+--------------------------------------------------------------part 2
+
+https://youtu.be/-l_CYgBj4IE?list=PL0lO_mIqDDFUev1gp9yEwmwcy8SicqKbt
+
+pip install pyTelegramBotAPI
+
+
+11 : 23
+
+----------------------------------------------------------end part 2
