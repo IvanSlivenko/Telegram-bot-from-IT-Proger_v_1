@@ -54,10 +54,19 @@ sqlite3
 
 
 
---------------------------------------------------------------part 5
+--------------------------------------------------------------part 5 weather
 
 https://youtu.be/v8Nqa78v2tE?list=PL0lO_mIqDDFUev1gp9yEwmwcy8SicqKbt
 
+https://home.openweathermap.org/api_keys
+
+key = 7d3ff9b16b029632188557e58d1f4fb8
+
+API -> current weather date -> api doc -> Built-in API request by city name
+
+pip install requests
+
+import json
 
 
 00 : 00

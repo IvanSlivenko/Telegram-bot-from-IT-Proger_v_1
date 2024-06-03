@@ -1,11 +1,15 @@
 import telebot
 import webbrowser
 import sqlite3
-
 import pygame
+import requests
+import json
+
+
 from telebot import types
 
 from config import TOKEN
+from config import WEATHER_KEY
 
 url_judo='https://www.google.com/search?client=opera&q=lp.lj+evfym&sourceid=opera&ie=UTF-8&oe=UTF-8#lpg=cid:CgIgAQ%3D%3D,ik:CAoSLEFGMVFpcFBEZklZWmFHQTJUQk5rRmNRRWdvSlBiRGxrT2ZWM1hyWC15SFpa'
 url_Google='https://www.google.com/?hl=ru'
@@ -17,7 +21,44 @@ url_Bild_Expr_heating='https://bud-express.in.ua/categories/43dbb77f-d0a2-46f2-b
 
 bot = telebot.TeleBot(TOKEN)
 
-#-------------------
+#----------------------------------------------------------------- weather beginning
+@bot.message_handler(commands=['weat'])
+def weat(message):
+    bot.send_message(message.chat.id, f'{message.from_user.first_name}. Вітаємо. Вкажіть місце подорожі')
+
+@bot.message_handler(content_types='text')
+def get_weather(message):
+    city = message.text.strip().lower()
+   
+    res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={WEATHER_KEY}&units=metric')
+    data = json.loads(res.text)
+    
+    if res:
+    
+        bot.send_message(message.chat.id, f' Параметри погоди : {res.json()}')#----------------------------------------- all parametrs
+        clouds = data['clouds']['all']
+        
+        #--------------------------------------------------------------------- Банер погоди
+        image_1 = '1.jpg'
+        image_2 = '2.webp'
+
+        image = '1.jpg' if clouds <= 80 else '2.webp'
+        file= open('./images/'+ image, 'rb')
+        bot.send_photo(message.chat.id, file)
+        #--------------------------------------------------------------------- Параиметри погоди
+        bot.reply_to(message, f"Погода {city}:\n\
+                                Мінімальна температура :  {data['main']['temp_min']} град.С \n\
+                                Максимальна тепмература :  {data['main']['temp_max']} град.C \n\
+                                Атмосферний тиск :  {data['main']['pressure']} мм. \n\
+                                Вологістть :  {data['main']['humidity']} % \n\
+                                Хмарність :  {data['clouds']['all']} % \n\
+                                Швидкість вітру: {data['wind']['speed']} м.с. \n\
+                                ")
+    else:
+        bot.send_message(message.chat.id, f'Місто з пошуковим запитом : {city} не знайдено')
+#----------------------------------------------------------------- weather end
+
+#-------------------------------------------------------------------------------- site
 current_name=None #------------------ об'являємо глобальну змінну
 #-------------------
 
@@ -92,8 +133,6 @@ def callback(call):
     info = ''
     for el in users:
         info += f"id: {el[0]}   Ім'я: {el[1]}   пароль : {el[2]}\n"
-
-
 
     cur.close()
     conn.close()
