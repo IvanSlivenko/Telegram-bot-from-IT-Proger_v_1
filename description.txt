@@ -72,3 +72,18 @@ import json
 00 : 00
 
 ----------------------------------------------------------end part 5
+
+
+
+--------------------------------------------------------------part 6 curencyConverter
+
+https://youtu.be/YrDL6EpYNiA?list=PL0lO_mIqDDFUev1gp9yEwmwcy8SicqKbt
+
+pip install CurrencyConverter
+
+pip install pyrrencies
+
+
+15 : 41
+
+----------------------------------------------------------end part 6

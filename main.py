@@ -21,32 +21,52 @@ url_Bild_Expr_heating='https://bud-express.in.ua/categories/43dbb77f-d0a2-46f2-b
 
 bot = telebot.TeleBot(TOKEN)
 
-#----------------------------------------------------------------- weather beginning
-@bot.message_handler(commands=['weat'])
-def weat(message):
-    bot.send_message(message.chat.id, f'{message.from_user.first_name}. Вітаємо. Вкажіть місце подорожі')
+#----------------------------------------------------------------- weather button beginning
+@bot.message_handler(commands=['wt'])
+def use_wt_button(message):
+    markup = telebot.types.InlineKeyboardMarkup()
+    markup.add(telebot.types.InlineKeyboardButton('Погода', callback_data='weather'))
 
-@bot.message_handler(content_types='text')
+    file = open('./images/3.png', 'rb')
+    bot.send_photo(message.chat.id, file)
+    bot.send_message(message.chat.id, f'{message.from_user.first_name}. Вітаємо. Натисніть кнопку для перегляду погоди', reply_markup=markup)
+
+@bot.callback_query_handler(func= lambda callback: True)
+def callback_weather(callback):
+
+    if callback.data == 'weather':
+        bot.send_message(callback.message.chat.id, 'Вітаємо. Вкажіть місце подорожі')
+        bot.register_next_step_handler(callback.message, get_weather) #----------- реєструємо одноразове використання функції
+        
+
+#---------------------------------------------------------------------------------------------------------------------- weather button end
+
+#----------------------------------------------------------------------------------------------------------- weather beginning
+# @bot.message_handler(commands=['weat'])
+# def weat(message):
+#     bot.send_message(message.chat.id, f'{message.from_user.first_name}. Вітаємо. Вкажіть місце подорожі')
+
+# @bot.message_handler(content_types='text')
 def get_weather(message):
     city = message.text.strip().lower()
    
     res = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={WEATHER_KEY}&units=metric')
     data = json.loads(res.text)
     
-    if res:
+    if res.status_code == 200:
     
-        bot.send_message(message.chat.id, f' Параметри погоди : {res.json()}')#----------------------------------------- all parametrs
-        clouds = data['clouds']['all']
+        # bot.send_message(message.chat.id, f' Параметри погоди : {res.json()}')#----------------------------------------- all parametrs
         
         #--------------------------------------------------------------------- Банер погоди
+        clouds = data['clouds']['all']
         image_1 = '1.jpg'
         image_2 = '2.webp'
 
         image = '1.jpg' if clouds <= 80 else '2.webp'
         file= open('./images/'+ image, 'rb')
         bot.send_photo(message.chat.id, file)
-        #--------------------------------------------------------------------- Параиметри погоди
-        bot.reply_to(message, f"Погода {city}:\n\
+        #--------------------------------------------------------------------- Параметри погоди
+        bot.send_message(message.chat.id, f"Погода {city}:\n\
                                 Мінімальна температура :  {data['main']['temp_min']} град.С \n\
                                 Максимальна тепмература :  {data['main']['temp_max']} град.C \n\
                                 Атмосферний тиск :  {data['main']['pressure']} мм. \n\
@@ -56,7 +76,7 @@ def get_weather(message):
                                 ")
     else:
         bot.send_message(message.chat.id, f'Місто з пошуковим запитом : {city} не знайдено')
-#----------------------------------------------------------------- weather end
+#-------------------------------------------------------------------------------------------------------- weather end
 
 #-------------------------------------------------------------------------------- site
 current_name=None #------------------ об'являємо глобальну змінну
@@ -77,6 +97,7 @@ def go_to_site(message):
     markup.row(btn_2, btn_3)
 
     bot.send_message(message.chat.id, 'Асортимент товарів ви можете переглянути на сайті', reply_markup=markup) 
+
 
 #---------------------------------------------------------------- use db
 

@@ -5,10 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "main.py",
+            // "name": "main.py",
+            // "name": "main_5.py",
+            "name": "main_6.py",
             "type": "debugpy",
             "request": "launch",
-            "program": "main.py",
+            // "program": "main.py",
+            // "program": "main_5.py",
+            "program": "main_6.py",
             "console": "integratedTerminal"
         }
     ]
