@@ -87,3 +87,28 @@ pip install pyrrencies
 15 : 41
 
 ----------------------------------------------------------end part 6
+
+
+--------------------------------------------------------------part 7 aiogram
+
+https://youtu.be/BvPaua-oC08?list=PL0lO_mIqDDFUev1gp9yEwmwcy8SicqKbt
+
+pip install aiogram
+
+
+11 : 24
+
+----------------------------------------------------------end part 7
+
+
+
+--------------------------------------------------------------part 8 Webapps
+
+https://youtu.be/y65BZbNB0YA?list=PL0lO_mIqDDFUev1gp9yEwmwcy8SicqKbt
+
+
+
+
+00 : 00
+
+----------------------------------------------------------end part 8

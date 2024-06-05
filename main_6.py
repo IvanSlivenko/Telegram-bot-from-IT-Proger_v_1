@@ -57,17 +57,34 @@ def summa(message):
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_metod(call):
-    values = call.data.upper().split('/')
-    bot.send_message(call.message.chat.id, 'Проводимо розрахунок')
-    # bot.send_message(call.message.chat.id, values[0])
-    # bot.send_message(call.message.chat.id, values[1])
-    # res = currency.convert(amount, values[0], values[1])
-    res_currency = round(currency_2.get_rate(values[0], values[1]),2)
-    res_summ = round(amount * res_currency,2)
-    
+    if call.data != 'else':
+        values = call.data.upper().split('/')
+        bot.send_message(call.message.chat.id, 'Проводимо розрахунок')
+        res_currency = round(currency_2.get_rate(values[0], values[1]),2)
+        res_summ = round(amount * res_currency,2)
+        
 
-    bot.send_message(call.message.chat.id, f'Під час конвертації {amount} {values[0]} в {values[1]} по курсу {res_currency}  ви отримаєте {res_summ}  {values[1]}.\n можете знову вказати сумму')
-    bot.register_next_step_handler(call.message, summa)
+        bot.send_message(call.message.chat.id, f'Під час конвертації {amount} {values[0]} в {values[1]} по курсу {res_currency}  ви отримаєте {res_summ}  {values[1]}.\n можете знову вказати сумму')
+        bot.register_next_step_handler(call.message, summa)
+    else:
+         bot.send_message(call.message.chat.id, 'Вкажіть пару значень через /')
+         bot.register_next_step_handler(call.message, my_currency)
+
+def my_currency(message):
+    try:
+        values = message.text.upper().split('/')
+        res_currency = round(currency_2.get_rate(values[0], values[1]),2)
+        res_summ = round(amount * res_currency,2)
+        
+
+        bot.send_message(message.chat.id, 'Уважно Вкажіть пару значень через /')
+        bot.register_next_step_handler(message, summa)
+    except Exception:
+        bot.send_message(message.chat.id, f'Під час конвертації {amount} {values[0]} в {values[1]} по курсу {res_currency}  ви отримаєте {res_summ}  {values[1]}.\n можете знову вказати сумму')
+        bot.register_next_step_handler(message, my_currency)
+
+
+    
 
     
 
