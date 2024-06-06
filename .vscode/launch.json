@@ -8,13 +8,15 @@
             // "name": "main.py",
             // "name": "main_5.py",
             // "name": "main_6.py",
-            "name": "main_7.py",
+            // "name": "main_7.py",
+            "name": "main_8.py",
             "type": "debugpy",
             "request": "launch",
             // "program": "main.py",
             // "program": "main_5.py",
             // "program": "main_6.py",
-            "program": "main_7.py",
+            // "program": "main_7.py",
+            "program": "main_8.py",
             "console": "integratedTerminal"
         }
     ]
