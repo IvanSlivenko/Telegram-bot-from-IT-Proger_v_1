@@ -106,9 +106,10 @@ pip install aiogram
 
 https://youtu.be/y65BZbNB0YA?list=PL0lO_mIqDDFUev1gp9yEwmwcy8SicqKbt
 
+https://core.telegram.org/bots/webapps
 
 
 
-00 : 00
+11 : 14
 
 ----------------------------------------------------------end part 8

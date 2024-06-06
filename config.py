@@ -9,4 +9,5 @@ url_Google='https://www.google.com/?hl=ru'
 url_Bild_Expr='https://bud-express.in.ua'
 url_Bild_Expr_doors='https://bud-express.in.ua/categories/d38241db-946c-4fbc-8338-eba2e95ade7e'
 url_Bild_Expr_heating='https://bud-express.in.ua/categories/43dbb77f-d0a2-46f2-bd47-fb5786073407'
+url_custome_1='https://github.com/IvanSlivenko/my_host/blob/main/index.html'
 

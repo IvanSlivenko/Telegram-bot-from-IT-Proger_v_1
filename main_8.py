@@ -9,7 +9,7 @@ from aiogram.types.web_app_info import WebAppInfo
 
 #------------------------------------------------------- initial bot
 from config import TOKEN
-from config import url_Bild_Expr, url_Bild_Expr_doors
+from config import url_Bild_Expr, url_Bild_Expr_doors, url_custome_1, url_Bild_Expr_heating
 #---------------------------------------- TOKEN
 bot = Bot(TOKEN)
 dp = Dispatcher()
@@ -20,10 +20,13 @@ dp = Dispatcher()
 @dp.message(CommandStart())
 async def cmd_start(message: types.Message):
     markup = ReplyKeyboardBuilder()
-    markup.add(KeyboardButton(text='Google', web_app=WebAppInfo(url='https://www.google.com.ua/?hl=uk')))
     markup.add(KeyboardButton(text='BudExpress', web_app=WebAppInfo(url=str(url_Bild_Expr))))
     markup.add(KeyboardButton(text='BudExpress Двері', web_app=WebAppInfo(url=str(url_Bild_Expr_doors))))
-    await message.answer(f'{message.from_user.first_name}. Вітаємо !', reply_markup=markup.adjust(1,2).as_markup(resize_keyboard=True))
+    markup.add(KeyboardButton(text='BudExpress Опалення', web_app=WebAppInfo(url=str(url_Bild_Expr_heating))))
+    markup.add(KeyboardButton(text='Home page', web_app=WebAppInfo(url=str(url_custome_1))))
+    markup.add(KeyboardButton(text='Google', web_app=WebAppInfo(url='https://www.google.com.ua/?hl=uk')))
+    
+    await message.answer(f'{message.from_user.first_name}. Вітаємо !', reply_markup=markup.adjust(1,2,1,1).as_markup(resize_keyboard=True))
     
 
 
