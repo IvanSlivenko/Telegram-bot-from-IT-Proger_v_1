@@ -108,8 +108,28 @@ https://youtu.be/y65BZbNB0YA?list=PL0lO_mIqDDFUev1gp9yEwmwcy8SicqKbt
 
 https://core.telegram.org/bots/webapps
 
+https://files.000webhost.com
+@Iv07092006sl
 
 
-11 : 14
+
+21 : 39
 
 ----------------------------------------------------------end part 8
+
+
+
+--------------------------------------------------------------part 9 Payments
+
+https://youtu.be/PkOEZq2bvVA?list=PL0lO_mIqDDFUev1gp9yEwmwcy8SicqKbt
+
+botFather -> mybots->Payments->Smart Glocal 
+
+
+
+PAYMENT_TOKEN = 1877036958:TEST:0079a5a0d5b0c8c7b45d47443cbc65b67422a907
+
+
+06 : 19
+
+----------------------------------------------------------end part 9
