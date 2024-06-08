@@ -20,14 +20,14 @@ dp = Dispatcher()
 async def cmd_start(message: types.Message):
     await bot.send_invoice(
         chat_id= message.chat.id,
-        title="title",
-        description="desc_test",
-        payload=f'test-invoice-payload',
+        title="Велосипед",
+        description="Спортивний Велосипед",
+        payload=f'invoice',
         provider_token=str(PAYMENT_TOKEN),
         currency='UAH',
         prices=[
             types.LabeledPrice(
-                label='Sub month',
+                label='Вартість',
                 amount=5000*100
             )
         ],
@@ -49,6 +49,10 @@ async def cmd_start(message: types.Message):
         # reply_markup=None,
         # request_timeout=30
     )
+
+@dp.message(F.types.ContentType.SUCCESSFUL_PAYMENT)
+async def succes(message: types.Message):
+    await message.answer(f'Succes {message.successful_payment.order_info}')
 
 
 

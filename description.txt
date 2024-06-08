@@ -133,3 +133,24 @@ PAYMENT_TOKEN = 1877036958:TEST:0079a5a0d5b0c8c7b45d47443cbc65b67422a907
 06 : 19
 
 ----------------------------------------------------------end part 9
+
+
+
+--------------------------------------------------------------part 10 Deploy to server
+
+https://youtu.be/BouToX9CCUE?list=PL0lO_mIqDDFUev1gp9yEwmwcy8SicqKbt
+
+
+
+hostiq
+
+Завантажити файли сайту ви можете за інструкцією: https://hostiq.ua/wiki/upload-site/#upload-files
+
+Встановити телеграм бота написаному на Python можна за інструкцією: https://hostiq.ua/wiki/ukr/cpanel-django/
+
+https://signup.heroku.com/confirm
+@Iv07092006sl
+
+00 : 00
+
+----------------------------------------------------------end part 10
